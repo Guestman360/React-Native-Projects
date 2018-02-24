@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import AlbumDetail from './AlbumDetail';
 import axios from 'axios';
 
+// Use class for handlind state and lifecycle as opposed to const a simpler alternative 
 class AlbumList extends Component {
     state = { albums: [] };
 
@@ -22,9 +23,9 @@ class AlbumList extends Component {
 
     render() { // All class based components must have render method to return some JSX
         return (
-            <View>
+            <ScrollView>
                 {this.renderAlbums()}
-            </View>
+            </ScrollView>
         );
     }
 }

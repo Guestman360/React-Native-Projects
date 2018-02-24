@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Linking } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
+import Button from './Button';
 
 // Whatever is passed here is props.children for CardSection tags (Referring to the Text tag with props.album.title)
 const AlbumDetail = ({ album }) => { 
     // Destructuring looks like this
-    const { title, artist, thumbnail_image, image } = album;
+    const { title, artist, thumbnail_image, image, url } = album;
     const { 
         thumbnailStyle, 
         headercontentStyle,
@@ -35,6 +36,11 @@ const AlbumDetail = ({ album }) => {
                     style={imageStyle}
                 />
             </CardSection>
+            <CardSection>
+                <Button onPress={() => Linking.openURL(url)}>
+                    Buy Now
+                </Button>
+            </CardSection>
         </Card>
     );
 };
@@ -48,6 +54,7 @@ const styles = {
         fontSize: 18
     },
     thumbnailStyle: { // Images must have size in order to show on screen
+        borderRadius: 25,
         height: 50,
         width: 50
     },
@@ -59,7 +66,7 @@ const styles = {
     },
     imageStyle: {
         height: 300,
-        flex: 1,
+        flex: 1, // flex 1 means span content the entire lengthe of device, very dynamic
         width: null
     }
 };
