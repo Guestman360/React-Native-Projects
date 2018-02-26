@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
 const Button = ({ onPress, children }) => { // Destrutruing taking place here
-const { buttonStyle, textStyle } = styles;
+    const { buttonStyle, textStyle } = styles;
 
     return (
         // onPress is passed to the onPress functin as a prop - run the funciton that was declared in the paretn

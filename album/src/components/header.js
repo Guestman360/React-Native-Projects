@@ -7,9 +7,6 @@ const Header = (props) => {
         <SafeAreaView style={viewStyle}>
             <Text style={textStyle}>{props.headerText}</Text>
         </SafeAreaView>
-        // <View style={viewStyle}>
-        //     <Text style={textStyle}>{props.headerText}</Text>
-        // </View>
     );
 }
 
