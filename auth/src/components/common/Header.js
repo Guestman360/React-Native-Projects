@@ -29,4 +29,4 @@ const styles = {
 };
 
 // Exproting make sthis component available throughout app
-export default Header;
+export { Header };
