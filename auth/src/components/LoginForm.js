@@ -11,16 +11,17 @@ class LoginForm extends Component {
         // Destructuring to use state properties in this method
         const { email, password } = this.state;
 
+        // Resetting state here
         this.setState({ error: '', loading: true });
 
         // functions below return a promise (in this case it is 'catch'), think of 2 choices, success or fail
         // If the request fails it falls into catch and runs next finction, then sets error state if all cases failed
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(this.onLoginsuccess.bind(this))
-        .catch(() => {
-            firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(this.onLoginsuccess.bind(this))
-            .catch(this.onLoginFail.bind(this));
+            .catch(() => {
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(this.onLoginsuccess.bind(this))
+                .catch(this.onLoginFail.bind(this));
         });
     }
 
