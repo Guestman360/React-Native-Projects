@@ -6,18 +6,22 @@ import * as actions from '../actions';
 
 // When you see this.props you're referring to props in the parent component
 // Onpress is the () which returns => this.props.selectLibrary(id)
+// library is placeholder for LibraryReducer which gets its data from the json file, id, title ...
 class ListItem extends Component {
+    // if library.id === selectedLibraryId then isnert Text under the card section
     renderDescription() {
-        if (this.props.library.id === this.props.selectedLibraryId) {
+        const { library, selectedLibraryId } = this.props;
+
+        if (library.id === selectedLibraryId) {
             return (
-                <Text>{description}</Text>
+                <Text>{library.description}</Text>
             );
         }
     }
 
     render() {
         const { titleStyle } = styles;
-        const { id, title, description } = this.props.library; // library from actions
+        const { id, title } = this.props.library; // library from actions
 
         return (
             <TouchableWithoutFeedback
@@ -29,6 +33,7 @@ class ListItem extends Component {
                             {title}
                         </Text>
                     </CardSection>
+                    {this.renderDescription()}
                 </View>
             </TouchableWithoutFeedback>
         );
