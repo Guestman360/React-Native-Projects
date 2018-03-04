@@ -10,9 +10,9 @@ import * as actions from '../actions';
 class ListItem extends Component {
     // if library.id === selectedLibraryId then isnert Text under the card section
     renderDescription() {
-        const { library, selectedLibraryId } = this.props;
+        const { library, expanded } = this.props;
 
-        if (library.id === selectedLibraryId) {
+        if (expanded) {
             return (
                 <Text>{library.description}</Text>
             );
@@ -47,9 +47,11 @@ const styles = {
     }
 }
 
-// Called with our application state
-const mapStateToProps = state => {
-    return { selectedLibraryId: state.selectedLibraryId };
+// Called with our application state, ownProps is called with props of component we're wrapping, like library
+const mapStateToProps = (state, ownProps) => {
+    const expanded = state.selectedLibraryId === ownProps.library.id;
+
+    return { expanded };
 };
 
 export default connect(mapStateToProps, actions)(ListItem);
