@@ -14,7 +14,7 @@ class LibraryList extends Component {
 
     renderRow(library) { // library is current item in list that is trying to render
         // library prop name next to ListItem is abitrary
-        return <ListItem library={library} />;
+        return <ListItem library={library} />; // this.props.library.title
     }
 
     render() {

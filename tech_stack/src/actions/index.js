@@ -4,3 +4,4 @@ export const selectLibrary = (libraryId) => { // this function is an action crea
         payload: libraryId
     };
 };
+// Actions tell reducers to update in a very specific fashion
