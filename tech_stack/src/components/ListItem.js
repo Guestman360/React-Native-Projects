@@ -1,5 +1,11 @@
 import React, { Component } from 'react'; 
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { 
+    Text,
+    TouchableWithoutFeedback, 
+    View,
+    LayoutAnimation
+ } from 'react-native';
+
 import { connect } from 'react-redux';
 import { CardSection } from './common';
 import * as actions from '../actions';
@@ -8,13 +14,21 @@ import * as actions from '../actions';
 // Onpress is the () which returns => this.props.selectLibrary(id)
 // library is placeholder for LibraryReducer which gets its data from the json file, id, title ...
 class ListItem extends Component {
+    // Called when component is about to be re-rendered to device
+    componentWillUpdate() {
+        LayoutAnimation.spring();
+    }
     // if library.id === selectedLibraryId then isnert Text under the card section
     renderDescription() {
         const { library, expanded } = this.props;
 
         if (expanded) {
             return (
-                <Text>{library.description}</Text>
+                <CardSection>
+                    <Text style={{ flex: 1, paddingLeft: 5, paddingRight: 5 }}>
+                        {library.description}
+                    </Text>
+                </CardSection>
             );
         }
     }
