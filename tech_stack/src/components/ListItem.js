@@ -35,11 +35,11 @@ class ListItem extends Component {
 
     render() {
         const { titleStyle } = styles;
-        const { id, title } = this.props.library; // library from actions
+        const { id, title } = this.props.library; // this.props means you can declare like so <ListItem library={...} />
 
         return (
             <TouchableWithoutFeedback
-                onPress={() => this.props.selectLibrary(id)}
+                onPress={() => this.props.selectLibrary(id)} // selectLibrary comes from action index.js
             >
                 <View>
                     <CardSection>
