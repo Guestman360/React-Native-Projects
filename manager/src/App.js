@@ -22,6 +22,9 @@ class App extends Component {
     }
 
     render() {
+        // create the store with reducers and apply async middleware 
+        // redux thunk (allows you to write action creators that return a function instead of an action.)
+        // IMPORTANT! - can never mutate store, just create new copy of it with updated data
         const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
         return (
             <Provider store={store}>
