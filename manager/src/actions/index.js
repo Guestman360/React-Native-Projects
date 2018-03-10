@@ -3,7 +3,8 @@ import {
     EMAIL_CHANGED, 
     PASSWORD_CHANGED,
     LOGIN_USER_SUCCESS,
-    LOGIN_USER_FAIL
+    LOGIN_USER_FAIL,
+    LOGIN_USER
 } from './types';
 
 export const emailChanged = (text) => {
@@ -23,6 +24,8 @@ export const passwordChanged = (text) => {
 // redux thunk makes things async with dispatch
 export const loginUser = ({ email, password }) => {
     return (dispatch) => {
+        dispatch({ type: LOGIN_USER });
+
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(user => loginUserSuccess(dispatch, user))
             .catch(() => {
@@ -35,9 +38,7 @@ export const loginUser = ({ email, password }) => {
 
 // Helper func that helps clean up 'pyramid of doom' code in above promises and dispatch
 const loginUserFail = (dispatch) => {
-    dispatch({
-        type: LOGIN_USER_FAIL
-    });
+    dispatch({ type: LOGIN_USER_FAIL });
 };
 
 const loginUserSuccess = (dispatch, user) => {

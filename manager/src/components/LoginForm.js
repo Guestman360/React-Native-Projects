@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
-import { Card, CardSection, Input, Button } from './common';
+import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class LoginForm extends Component {
     // these functions call the actions from the index.js actions file
@@ -32,6 +32,22 @@ class LoginForm extends Component {
         }
     }
 
+    renderButton() {
+        // IT SEEMS LIKE THIS.PROPS HAS ACCESS TO LOADING SIMPLY BECASUE WE'RE USING MAPSTATETOPROPS WHICH CONNECTS TO
+        // AUTH, WHICH IN TURN CONNECTS TO AUTHREDUCER WHICH OWNS LOADING...
+        // If loading show spinner
+        if (this.props.loading) {
+            return <Spinner size="large" />;
+        }
+    
+        // otherwise show button
+        return (
+            <Button onPress={this.onButtonPress.bind(this)}>
+                Login
+            </Button>
+        );
+    }
+
 // we tell input what it's value is
 // bind(this) calls the function we declared in this file, to this prop
     render() {
@@ -56,12 +72,12 @@ class LoginForm extends Component {
                     />
                 </CardSection>
 
-                {this.renderError()}
+                <Text style={styles.errorTextStyle}>
+                    {this.props.error}
+                </Text>
 
                 <CardSection>
-                    <Button onPress={this.onButtonPress.bind(this)}>
-                        Login
-                    </Button>
+                    {this.renderButton()}
                 </CardSection>
             </Card>
         );
@@ -76,12 +92,17 @@ const styles = {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        email: state.auth.email,
-        password: state.auth.password,
-        error: state.auth.error
-    };
+const mapStateToProps = ({ auth }) => {
+    // Pulling all properties off of auth reducer - REMEMBER that auth is from index.js/Reducers
+    const { email, password, error, loading } = auth;
+
+    return { email, password, error, loading }; 
+    
+    // return {
+    //     email: state.auth.email,
+    //     password: state.auth.password,
+    //     error: state.auth.error
+    // };
 };
 // DON'T FORGET TO ADD NEW ACTIONS TO CONNECT FUNCTION!!!
 export default connect(mapStateToProps, { 
