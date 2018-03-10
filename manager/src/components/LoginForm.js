@@ -94,15 +94,9 @@ const styles = {
 
 const mapStateToProps = ({ auth }) => {
     // Pulling all properties off of auth reducer - REMEMBER that auth is from index.js/Reducers
-    const { email, password, error, loading } = auth;
+    const { email, password, error, loading } = auth; // FROM THE AUTHREDUCER
 
     return { email, password, error, loading }; 
-    
-    // return {
-    //     email: state.auth.email,
-    //     password: state.auth.password,
-    //     error: state.auth.error
-    // };
 };
 // DON'T FORGET TO ADD NEW ACTIONS TO CONNECT FUNCTION!!!
 export default connect(mapStateToProps, { 
