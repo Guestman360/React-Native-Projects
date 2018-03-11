@@ -7,7 +7,7 @@ import reducers from './reducers';
 import LoginForm from './components/LoginForm';
 
 // Add file path of this file to project index.js file
-
+// https://github.com/mrbrackins/ManagerApp/blob/master/src/Router.js
 class App extends Component {
     componentWillMount() {
         const config = {
