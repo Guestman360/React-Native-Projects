@@ -13,6 +13,7 @@ import RootReducer from './Reducers';
 
 const middleware = applyMiddleware(thunk, promise, logger);
 
+// Create initial store here to pass to provider
 const Store = createStore(
     RootReducer,
     compose(

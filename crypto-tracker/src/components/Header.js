@@ -15,7 +15,7 @@ const Header = () => {
 const styles = StyleSheet.create({
     headerContainer: {
         display: "flex",
-        marginTop: 55,
+        marginTop: 44,
         alignItems: "center"
     },
     header: {
