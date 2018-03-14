@@ -17,6 +17,6 @@ function mapStateToProps(state) {
         crypto: state.crypto
     }
 }
-
+// https://medium.com/react-native-training/tutorial-react-native-redux-native-mobile-app-for-tracking-cryptocurrency-bitcoin-litecoin-810850cf8acc
 // connect() hooks up react components with redux state
 export default connect(mapStateToProps)(CryptoContainer);
