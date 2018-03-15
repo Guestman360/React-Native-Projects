@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
 
     switch(action.type) {
         case FETCHING_COIN_DATA:
-            // Object assign creates a new copy of state in this case
+            // Object assign creates a new copy of state in this case - POSSIBLY CHANGE DATA TO []??
             return Object.assign({}, state, {
                 isFetching: true,
                 data: null,
