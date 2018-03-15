@@ -26,7 +26,7 @@ const CoinCard = ({ symbol, coin_name, price_usd, percent_change_24h, percent_ch
     return (
         <View style={container}>
             <Image
-                style={style.image}
+                style={styles.image}
                 source={{ uri: images[symbol] }}
             />
             <Text>{symbol}</Text>
