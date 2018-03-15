@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 
 import FetchCoinData from './../Actions/FetchCoinData';
 import CoinCard from './CoinCard';
@@ -46,10 +46,17 @@ class CryptoContainer extends Component {
         }
 
         return (
-            <View>
+            <ScrollView contentContainerStyle={styles.contentContainer}>
                 {this.renderCoinCards()}
-            </View>
+            </ScrollView>
         )
+    }
+}
+
+const styles = {
+    contentContainer: {
+        paddingBottom: 100,
+        paddingTop: 55
     }
 }
 
