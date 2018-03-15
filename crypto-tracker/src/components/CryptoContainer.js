@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 
 import FetchCoinData from './../Actions/FetchCoinData';
 import CoinCard from './CoinCard';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 class CryptoContainer extends Component {
 
@@ -30,6 +31,19 @@ class CryptoContainer extends Component {
     render() {
 
         const { crypto } = this.props;
+
+        if (crypto.isFetching) {
+            return (
+                <View>
+                    <Spinner
+                        visible={crypto.isFetching}
+                        textContent={"Loading..."}
+                        textStyle={{color: '#253145'}}
+                        animation="fade"
+                    />
+                </View>
+            )
+        }
 
         return (
             <View>
