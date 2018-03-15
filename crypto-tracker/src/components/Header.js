@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
         display: "flex",
         marginTop: 50,
         alignItems: "center",
-        backgroundColor: 'lightslategrey'
     },
     header: {
         fontWeight: "bold",
